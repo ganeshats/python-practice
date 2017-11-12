@@ -1,0 +1,74 @@
+inDate = raw_input("Enter date in dd-mm-yyyy format: ")
+
+
+def is_leap_year(yr):
+    is_leap = False
+    if yr % 4 == 0:
+        if yr % 100 == 0:
+            if yr % 400 == 0:
+                is_leap = True
+        else:
+            is_leap = True
+    return is_leap
+
+
+def is_date_valid(dt):
+    dat, mont, yr = dt.split("-")
+    dat = int(dat)
+    mont = int(mont)
+    yr = int(yr)
+    is_valid_date = True
+
+    if dat > 0 or mont > 0 or yr > 0:
+        if dat > 31 or mont > 12:
+            is_valid_date = False
+        elif dat == 31 and mont not in [1, 3, 5, 7, 8, 10, 12]:
+            is_valid_date = False
+        elif mont == 2:
+            if dat > 29:
+                is_valid_date = False
+            elif dat == 29 and not is_leap_year(yr):
+                is_valid_date = False
+    else:
+        is_valid_date = False
+
+    return is_valid_date
+
+
+def increment_date(dt):
+    dat, mont, yr = dt.split("-")
+    dat = int(dat)
+    mont = int(mont)
+    yr = int(yr)
+    # max_days = 01
+
+    if mont == 2:
+        if is_leap_year(yr):
+            max_days = 29
+        else:
+            max_days = 28
+    elif mont in [1, 3, 5, 7, 8, 10, 12]:
+        max_days = 31
+    else:
+        max_days = 30
+
+    if (dat + 1) > max_days:  # if added date exceeds month last date
+        if mont == 12:  # if December, add 1 to year and reset month
+            yr = yr + 1
+            mont = 0
+        mont = mont + 1
+        dat = (dat + 1) - max_days  # Can be reused for adding n days.
+    else:
+        dat += 1
+
+    return '-'.join([str(dat), str(mont), str(yr)])
+
+
+if is_date_valid(inDate):
+    print "Date is correct"
+    print "Adding a date gives %s" % increment_date(inDate)
+else:
+    print "Date is wrong"
+
+#upload in git
+
