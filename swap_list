@@ -1,0 +1,16 @@
+in_text = ""
+text_list = []
+while in_text != "done":
+    in_text = raw_input("Enter a string ('done' to exit): ")
+    if in_text != "done":
+        text_list.append(in_text)
+
+print text_list
+# swap the values
+# tmp = text_list[0]
+# text_list[0] = text_list[int(text_list.__len__()) - 1]
+# text_list[int(text_list.__len__()) - 1] = tmp
+
+text_list[0], text_list[text_list.__len__() - 1] = text_list[text_list.__len__() - 1], text_list[0]
+
+print text_list
