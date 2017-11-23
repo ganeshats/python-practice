@@ -11,6 +11,8 @@ print text_list
 # text_list[0] = text_list[int(text_list.__len__()) - 1]
 # text_list[int(text_list.__len__()) - 1] = tmp
 
-text_list[0], text_list[text_list.__len__() - 1] = text_list[text_list.__len__() - 1], text_list[0]
+# text_list[0], text_list[text_list.__len__() - 1] = text_list[text_list.__len__() - 1], text_list[0]
+# optimized way / pythonic way
+text_list[0], text_list[-1] = text_list[-1], text_list[0]
 
 print text_list
