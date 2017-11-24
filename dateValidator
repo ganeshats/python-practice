@@ -18,18 +18,18 @@ def is_date_valid(dt):
 
     if dat > 0 or mont > 0 or yr > 0:
         if dat > 31 or mont > 12:
-            is_valid_date = False
+            return False
         elif dat == 31 and mont not in [1, 3, 5, 7, 8, 10, 12]:
-            is_valid_date = False
+            return False
         elif mont == 2:
             if dat > 29:
-                is_valid_date = False
+                return False
             elif dat == 29 and not is_leap_year(yr):
-                is_valid_date = False
+                return False
     else:
-        is_valid_date = False
+        return False
 
-    return is_valid_date
+    return True
 
 
 def increment_date(dt):

@@ -4,8 +4,9 @@ for i in range(0,5,1):
     num_list.append(in_text)
 
 sums = 0
-for n in num_list:
-    sums += int(n)
+# for n in num_list:
+#     sums += int(n)
 
-print sums
+
+print reduce(lambda x, y: int(x) + int(y), num_list)
 print num_list[1]
