@@ -26,4 +26,15 @@ for item in li:
         maxi2 = maxi1
         maxi1 = item
 
+
+# n greatest - Generic method
+def generic_method(n, list_to_sort):
+    max_list = list("0"*n)
+    max_list = map(int,max_list)
+    for item in list_to_sort:
+        if item > min(max_list):
+            max_list.remove(min(max_list))
+            max_list.append(item)
+    print "Result: " + str(min(max_list))
+
 print maxi2
