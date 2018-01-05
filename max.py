@@ -9,13 +9,7 @@ print maxi
 
 # with reduce
 
-
-def gr(x, y):
-    if x > y:
-        return x
-    return y
-
-maxi_reduce = reduce(gr, li)
+maxi_reduce = reduce(lambda x, y: x if x > y else y, li)
 print maxi
 
 # second greatest
